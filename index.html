@@ -1,0 +1,533 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MyKhata | Premium Finance</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <a href="#dashboard" class="brand">
+            <div class="brand-logo">Mk
+            </div>
+            <div>
+                <h2>MyKhata</h2>
+                <span>SMART FINANCE</span>
+            </div>
+        </a>
+
+        <div class="profile-card">
+            <div class="profile-image">
+                <img src="ankur.jpeg"
+                     alt="Ankur Raj"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+                <span class="profile-fallback">AR</span>
+                <i class="online-dot"></i>
+            </div>
+
+            <div class="profile-info">
+                <h3>Ankur Raj</h3>
+                <p>@ankur_raj__</p>
+            </div>
+
+            <span class="profile-menu">•••</span>
+        </div>
+
+        <p class="nav-label">WORKSPACE</p>
+
+        <nav class="navigation">
+            <a href="#dashboard" class="nav-link active">
+                <span>⌂</span> Dashboard
+            </a>
+            <a href="#analytics" class="nav-link">
+                <span>◷</span> Analytics
+            </a>
+            <a href="#transactions" class="nav-link">
+                <span>⇄</span> Transactions
+            </a>
+            <a href="#add" class="nav-link">
+                <span>＋</span> Add Transaction
+            </a>
+            <a href="#report" class="nav-link">
+                <span>▤</span> Monthly Report
+            </a>
+        </nav>
+
+        <p class="nav-label second-label">PREFERENCES</p>
+
+        <nav class="navigation">
+            <a href="#profile" class="nav-link">
+                <span>♙</span> My Profile
+            </a>
+            <a href="#about" class="nav-link">
+                <span>ⓘ</span> About Project
+            </a>
+        </nav>
+
+        <div class="sidebar-spacer"></div>
+
+        <div class="sidebar-promo">
+            <div class="promo-icon">✦</div>
+            <h3>Smart Money Habits</h3>
+            <p>Small savings today create a better tomorrow.</p>
+            <a href="#report">View my report →</a>
+        </div>
+
+        <div class="sidebar-footer">
+            <span class="status-dot"></span>
+            All data saved locally
+        </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+                <button class="mobile-menu" id="menuButton">☰</button>
+
+                <div>
+                    <p class="breadcrumb"><strong>Dashboard</strong></p>
+                    <span class="topbar-caption">Your personal finance space</span>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="date-display">
+                    <span>◷</span>
+                    <span id="todayDate"></span>
+                </div>
+
+                <button class="icon-button" id="refreshButton" title="Refresh dashboard">
+                    ↻
+                </button>
+
+                <div class="top-avatar">
+                    <img src="ankur.jpeg"
+                         alt="Profile"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+                    <span>AR</span>
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- WELCOME -->
+        <section class="welcome-section" id="dashboard">
+
+            <div class="welcome-text">
+                <span class="section-kicker">YOUR FINANCIAL OVERVIEW</span>
+
+                <h1>Good to see you, <span>Ankur!</span></h1>
+
+                <p>Here's what's happening with your money today.</p>
+            </div>
+
+            <a href="#add" class="primary-button">
+                <span>＋</span> Add Transaction
+            </a>
+
+        </section>
+
+        <!-- SUMMARY -->
+        <section class="stats-grid">
+
+            <article class="stat-card balance-card">
+                <div class="stat-top">
+                    <span>Total Balance</span>
+                    <div class="stat-symbol">◈</div>
+                </div>
+
+                <h2 id="balance">₹0</h2>
+
+                <div class="stat-bottom">
+                    <span class="trend positive">↗ Available</span>
+                    <span class="stat-note">Current funds</span>
+                </div>
+
+                <div class="card-decoration"></div>
+            </article>
+
+            <article class="stat-card income-card">
+                <div class="stat-top">
+                    <span>Total Income</span>
+                    <div class="stat-symbol">↗</div>
+                </div>
+
+                <h2 id="income">₹0</h2>
+
+                <div class="stat-bottom">
+                    <span class="trend positive">● Received</span>
+                    <span class="stat-note">All earnings</span>
+                </div>
+
+                <div class="card-decoration"></div>
+            </article>
+
+            <article class="stat-card expense-card">
+                <div class="stat-top">
+                    <span>Total Expenses</span>
+                    <div class="stat-symbol">↘</div>
+                </div>
+
+                <h2 id="expense">₹0</h2>
+
+                <div class="stat-bottom">
+                    <span class="trend negative">● Spent</span>
+                    <span class="stat-note">All spending</span>
+                </div>
+
+                <div class="card-decoration"></div>
+            </article>
+
+            <article class="stat-card transaction-card">
+                <div class="stat-top">
+                    <span>Transactions</span>
+                    <div class="stat-symbol">▤</div>
+                </div>
+
+                <h2 id="count">0</h2>
+
+                <div class="stat-bottom">
+                    <span class="trend neutral">● Records</span>
+                    <span class="stat-note">Total activity</span>
+                </div>
+
+                <div class="card-decoration"></div>
+            </article>
+
+        </section>
+
+        <!-- ANALYTICS -->
+        <section class="analytics-grid" id="analytics">
+
+            <!-- LINE CHART -->
+            <article class="glass-panel line-panel">
+
+                <div class="panel-heading">
+                    <div>
+                        <span class="section-kicker">CASH FLOW ANALYSIS</span>
+                        <h2>Income vs Expenses</h2>
+                        <p>Compare your earnings and spending over time.</p>
+                    </div>
+
+                    <select id="chartPeriod" class="dark-select">
+                        <option value="6">Last 6 months</option>
+                        <option value="12">Last 12 months</option>
+                    </select>
+                </div>
+
+                <div class="chart-legend">
+                    <span><i class="legend-blue"></i> Income</span>
+                    <span><i class="legend-red"></i> Expenses</span>
+                </div>
+
+                <div class="line-chart-box">
+                    <canvas id="lineChart"></canvas>
+                </div>
+
+            </article>
+
+            <!-- DOUGHNUT CHART -->
+            <article class="glass-panel donut-panel">
+
+                <div class="panel-heading">
+                    <div>
+                        <span class="section-kicker">SPENDING BREAKDOWN</span>
+                        <h2>Expense Categories</h2>
+                        <p>Understand where your money goes.</p>
+                    </div>
+                </div>
+
+                <div class="donut-chart-box">
+
+                    <canvas id="donutChart"></canvas>
+
+                    <div class="donut-label">
+                        <span>TOTAL SPENT</span>
+                        <h3 id="chartTotal">₹0</h3>
+                        <small>This dashboard</small>
+                    </div>
+
+                </div>
+
+                <div class="category-legend" id="categoryLegend"></div>
+
+            </article>
+
+        </section>
+
+        <!-- LOWER CONTENT -->
+        <section class="content-grid">
+
+            <!-- RECENT TRANSACTIONS -->
+            <article class="glass-panel recent-panel">
+
+                <div class="panel-heading">
+                    <div>
+                        <span class="section-kicker">YOUR ACTIVITY</span>
+                        <h2>Recent Transactions</h2>
+                    </div>
+
+                    <a href="#transactions" class="text-link">View all →</a>
+                </div>
+
+                <div id="recentTransactions"></div>
+
+            </article>
+
+            <!-- MONTHLY SUMMARY -->
+            <article class="glass-panel report-panel" id="report">
+
+                <span class="section-kicker">MONTHLY OVERVIEW</span>
+                <h2>Money Snapshot</h2>
+                <p class="report-description">Your current month's financial summary.</p>
+
+                <div class="report-stat">
+                    <span><i class="report-income-dot"></i> Income</span>
+                    <strong id="monthlyIncome">₹0</strong>
+                </div>
+
+                <div class="report-stat">
+                    <span><i class="report-expense-dot"></i> Expenses</span>
+                    <strong id="monthlyExpense">₹0</strong>
+                </div>
+
+                <div class="report-stat">
+                    <span><i class="report-saving-dot"></i> Savings</span>
+                    <strong id="monthlySavings">₹0</strong>
+                </div>
+
+                <div class="savings-section">
+                    <div class="savings-title">
+                        <span>Savings ratio</span>
+                        <strong id="savingPercent">0%</strong>
+                    </div>
+
+                    <div class="progress-track">
+                        <div class="progress-fill" id="savingBar"></div>
+                    </div>
+                </div>
+
+                <div class="report-message">
+                    ✦ Keep tracking your spending to reach your savings goals.
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- TRANSACTIONS -->
+        <section class="glass-panel transactions-panel" id="transactions">
+
+            <div class="panel-heading transactions-heading">
+
+                <div>
+                    <span class="section-kicker">TRANSACTION MANAGEMENT</span>
+                    <h2>All Transactions</h2>
+                    <p>Search, filter and manage your records.</p>
+                </div>
+
+                <div class="transaction-tools">
+                    <input type="search" id="searchInput"
+                           placeholder="⌕ Search transactions...">
+
+                    <select id="filterType" class="dark-select">
+                        <option value="all">All Types</option>
+                        <option value="income">Income</option>
+                        <option value="expense">Expenses</option>
+                    </select>
+
+                    <select id="sortOrder" class="dark-select">
+                        <option value="newest">Newest</option>
+                        <option value="oldest">Oldest</option>
+                        <option value="highest">Highest amount</option>
+                        <option value="lowest">Lowest amount</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="table-wrap">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>TRANSACTION</th>
+                            <th>CATEGORY</th>
+                            <th>DATE</th>
+                            <th>TYPE</th>
+                            <th>AMOUNT</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="transactionList"></tbody>
+                </table>
+
+            </div>
+
+            <p class="empty-message" id="emptyMessage" hidden>
+                No transactions found.
+            </p>
+
+        </section>
+
+        <!-- ADD FORM -->
+        <section class="glass-panel form-panel" id="add">
+
+            <div class="panel-heading">
+                <div>
+                    <span class="section-kicker">QUICK ENTRY</span>
+                    <h2 id="formTitle">Create Transaction</h2>
+                    <p>Add your income or expenses in seconds.</p>
+                </div>
+            </div>
+
+            <form id="transactionForm">
+
+                <div class="form-grid">
+
+                    <label>
+                        Transaction Name
+                        <input type="text" id="titleInput"
+                               placeholder="e.g. Grocery Shopping"
+                               maxlength="60" required>
+                    </label>
+
+                    <label>
+                        Amount (₹)
+                        <input type="number" id="amountInput"
+                               placeholder="Enter amount"
+                               min="1" step="0.01" required>
+                    </label>
+
+                    <label>
+                        Transaction Type
+                        <select id="typeInput">
+                            <option value="expense">Expense</option>
+                            <option value="income">Income</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Category
+                        <select id="categoryInput">
+                            <option>Food</option>
+                            <option>Travel</option>
+                            <option>Shopping</option>
+                            <option>Education</option>
+                            <option>Bills</option>
+                            <option>Entertainment</option>
+                            <option>Salary</option>
+                            <option>Freelance</option>
+                            <option>Other</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Transaction Date
+                        <input type="date" id="dateInput" required>
+                    </label>
+
+                    <div class="form-actions">
+                        <button type="submit" class="primary-button" id="submitButton">
+                            ＋ Save Transaction
+                        </button>
+
+                        <button type="button" class="secondary-button"
+                                id="cancelButton" hidden>
+                            Cancel
+                        </button>
+                    </div>
+
+                </div>
+
+                <p id="message" class="form-message"></p>
+
+            </form>
+
+        </section>
+
+        <!-- PROFILE -->
+        <section class="glass-panel profile-section" id="profile">
+
+            <div class="profile-large">
+                <img src="ankur.jpeg" alt="Ankur Raj"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+                <span>AR</span>
+            </div>
+
+            <div class="profile-details">
+                <span class="section-kicker">PROJECT OWNER</span>
+                <h2>Ankur Raj</h2>
+                <p>Web Developer | B.Tech CSE Student</p>
+                <div class="user-id">USER ID: ankur_raj__</div>
+            </div>
+
+            <div class="profile-badge">✦ Personal Dashboard</div>
+
+        </section>
+
+        <!-- ABOUT -->
+        <section class="glass-panel about-section" id="about">
+
+            <span class="section-kicker">ABOUT THE PROJECT</span>
+            <h2>MyKhata – Smart Expense Tracker</h2>
+
+            <p>
+                MyKhata is a JavaScript-based personal finance management
+                application. It helps users record income and expenses,
+                monitor their financial balance, analyse spending patterns,
+                and understand monthly savings through interactive charts.
+            </p>
+
+            <div class="technology-list">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+                <span>Local Storage</span>
+                <span>Chart.js</span>
+            </div>
+
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div>
+                <strong>MyKhata</strong>
+                <span>Smart money. Better future.</span>
+            </div>
+
+            <p>Designed by Ankur Raj · © 2026</p>
+        </footer>
+
+    </main>
+
+</div>
+
+</body>
+</html>
